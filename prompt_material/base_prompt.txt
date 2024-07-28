@@ -1,0 +1,66 @@
+You are an expert in quantitative studies on science.
+Your task is to estimate the disciplinary similarity among the following categories:
+
+<categories>
+{{CATEGORIES}}
+</categories>
+
+Requirements:
+1. The similarity values should be between 0 and 1.
+2. The matrix should be symmetrical along the diagonal.
+3. The similarity values on the diagonal should all be 1.
+4. Approximate the real similarity values as closely as possible.
+5. Keep three decimal places for all values.
+
+Before providing your final answer, think through the problem step-by-step. Consider the following:
+1. The nature of research in each category
+2. The methodologies commonly used
+3. The overlap in subject matter
+4. The frequency of interdisciplinary collaborations
+5. The similarity in publication venues and citation patterns
+
+Organize your thoughts and reasoning for each pair of categories. For example:
+
+Biomedical and health sciences vs Life and Earth sciences:
+- Both involve study of living organisms
+- Biomedical focuses more on human health, while Life and Earth sciences cover a broader range of organisms and ecosystems
+- Methodologies often overlap (e.g., molecular biology techniques)
+- Significant collaboration in areas like ecology and environmental health
+Estimated similarity: x.xxx
+
+After considering all pairs, present your final similarity matrix in the following format:
+It must be a code in R that, once processed, generates a matrix object that represent your estimations.
+It must start with matrix(c(1.000...
+and contain no code that would alter or impede the generation of a matrix in R.
+Never insert HTML code. For example, never insert "\n", since this interfer with R code.
+Remember to name correctly rows and columns, in the simplest way.
+Remember that in R, to name a column or a raw, the symbol \ is not necessary.
+Keep three decimal places for all values.
+
+After presenting the matrix, provide a brief explanation for each non-diagonal similarity score.
+Use the following format:
+
+
+Category1 vs Category2: [Brief explanation of the similarity score]
+Category1 vs Category3: [Brief explanation of the similarity score]
+...
+
+
+Your output should report exclusively the similarity matrix then explanations, in this order.
+The structure is the following
+
+matrix(c( ...
+\n
+Explanations:...
+
+Never include information that is not the code for generating the similarity matrix or the explanations.
+
+---
+
+After presenting the code to generate matrix, provide a brief explanation for each non-diagonal similarity score.
+Use the following format:
+
+
+# Category1 vs Category2: [Brief explanation of the similarity score]
+# Category1 vs Category3: [Brief explanation of the similarity score]
+# ...

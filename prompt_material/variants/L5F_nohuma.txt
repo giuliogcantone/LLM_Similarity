@@ -1,0 +1,5 @@
+Biomedical and health sciences,
+Life and Earth sciences,
+Mathematics and Computer Science,
+Physical sciences and engineering,
+Social sciences

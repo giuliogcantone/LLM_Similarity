@@ -1,0 +1,28 @@
+You are an expert in quantitative studies on science.
+Your task is to provide me a R script, that when executed will generate a matrix object in R.
+THe content of the matrix are estimates of the disciplinary similarity among the following categories:
+
+{{CATEGORIES}}
+
+Requirements:
+1. The similarity values should be between 0 and 1.
+2. The matrix should be symmetrical along the diagonal.
+3. The similarity values on the diagonal should all be 1.
+4. Approximate the real similarity values as closely as possible.
+5. Keep three decimal places for all values.
+
+Before providing your final answer, think through the problem step-by-step. Consider the following:
+1. The nature of research in each category
+2. The methodologies commonly used
+3. The overlap in subject matter
+4. The frequency of interdisciplinary collaborations
+5. The similarity in publication venues and citation patterns
+
+After considering all pairs of categories, present your final similarity matrix in the following format:
+It must be a code in R that generates a matrix object that represent your estimates.
+It must start with matrix(c(1.000... and contain no "\n" within the code
+Remember to name correctly rows and columns.
+
+The output must consist exclusively in R code. Do not output anything that is not R code.
+Do not write stuff like "Here is the..." no. I just want R code.
+It must be such that when I copypaste your output on R, it must generate the matrix.
