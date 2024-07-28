@@ -1,0 +1,108 @@
+---
+title: "Claude"
+author: "Giulio G. Cantone"
+date: "2024-07-25"
+output: html_document
+---
+
+```{r}
+devtools::install_github("yrvelez/claudeR")
+pak::pak("jhk0530/gemini.R")
+```
+
+
+```{r setup, include=FALSE}
+pacman::p_load(
+  tidyverse
+)
+```
+
+```{r}
+response <- claudeR::claudeR(
+  prompt = list(
+    list(
+      role = "user",
+      content = "Generami una qualunque matrice che sarà letta da R, in un formato del software statistico R. Lascia perdere ogni commento, forniscimi direttamente un codice che, se eseguito, restituirà una matrice.")),
+  model = "claude-3-5-sonnet-20240620",
+  max_tokens = 50)
+
+response <- claudeR::claudeR(
+  prompt = list(
+    list(
+      role = "user",
+      content = "What is the capital of France?")),
+  model = "claude-3-haiku-20240307",
+  max_tokens = 50)
+```
+
+
+Claude
+
+```{r}
+list.files("prompt_material/variants",
+           full.names = TRUE) -> variants
+
+prompt_base <- read_file(
+  "prompt_material/slim_base.txt")
+```
+
+
+```{r}
+
+responses_Claude = list()
+i_model = "claude-3-haiku-20240307"
+
+for (i in 1:6) {
+  prompt_base %>%
+  str_replace("\\{\\{CATEGORIES\\}\\}",
+              read_file(
+                variants[i]
+              )) -> i_prompt
+  
+  i_matrix <- claudeR::claudeR(
+  prompt = list(
+    list(
+      role = "user",
+      content = i_prompt)),
+  model = i_model,
+  max_tokens = 2000)
+  
+  list(
+    model = i_model,
+    temperature = 0,
+    prompt = variants[i] |> str_extract("L5F[^.]*"),
+    output_matrix = i_matrix
+  ) -> responses[[i]]
+  
+}
+```
+
+
+Fetch
+
+```{r}
+response <- claudeR::claudeR(
+  prompt = list(
+    list(
+      role = "user",
+      content = prompt_zero)),
+  model = "claude-3-haiku-20240307",
+  max_tokens = 500)
+
+response
+
+parse(text = response) |> eval() -> matrix_zero
+```
+
+Gemini
+
+```{r}
+gemini.R::gemini("Explain about the gemini in astrology in one line")
+```
+
+ChatGPT
+
+```{r}
+chatgpt::ask_chatgpt("Che versione sto usando")
+```
+
